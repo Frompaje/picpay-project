@@ -21,10 +21,9 @@ public class WalletService {
         Optional<Wallet> isWalletExist = walletRepository.findByCpfOrCnpjOrEmail(body.cpf(), body.cnpj(), body.email());
 
         if (isWalletExist.isPresent()) {
-        throw new WalletDataAlreadyExistsException("Cpf, Cnpj or Email Already exists");
+            throw new WalletDataAlreadyExistsException("Cpf, Cnpj or Email Already exists");
         }
 
         return walletRepository.save(body.toWallet());
-
     }
 }

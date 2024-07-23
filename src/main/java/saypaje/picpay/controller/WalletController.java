@@ -1,5 +1,6 @@
 package saypaje.picpay.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +19,7 @@ public class WalletController {
     }
 
     @PostMapping("/wallets")
-    public ResponseEntity<Wallet> createWallet(@RequestBody CreateWalletDTO body) {
+    public ResponseEntity<Wallet> createWallet(@RequestBody @Valid CreateWalletDTO body) {
         Wallet wallet = walletService.createWallet(body);
 
         return ResponseEntity.ok(wallet);
